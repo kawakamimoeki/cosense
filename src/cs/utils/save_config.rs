@@ -1,6 +1,6 @@
 use std::fs;
-use crate::makesense::utils::get_config_path::get_config_path;
-use crate::makesense::utils::config::Config;
+use crate::cs::utils::get_config_path::get_config_path;
+use crate::cs::utils::config::Config;
 
 pub fn save_config(config: &Config) {
   let config_path = get_config_path();

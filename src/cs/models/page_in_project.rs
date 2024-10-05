@@ -1,7 +1,7 @@
 use serde::{Deserialize, Serialize};
-use makesense::models::user::User;
+use cs::models::user::User;
 
-use crate::makesense;
+use crate::cs;
 
 #[derive(Deserialize, Serialize, Debug)]
 pub struct PageInProject {

@@ -1,5 +1,5 @@
 use serde::{Deserialize, Serialize};
-use crate::makesense::models::related_page::RelatedPage;
+use crate::cs::models::related_page::RelatedPage;
 
 #[derive(Deserialize, Serialize, Debug)]
 pub struct RelatedPages {

@@ -1,21 +1,21 @@
 use clap::Parser;
 use clap::Subcommand;
-mod makesense;
-use makesense::commands::get_code::get_code;
-use makesense::commands::get_icon::get_icon;
-use makesense::commands::get_page_json::get_page_json;
-use makesense::commands::get_pages::get_pages;
-use makesense::commands::get_pages_json::get_pages_json;
-use makesense::commands::get_search_json::get_search_json;
-use makesense::commands::get_table::get_table;
-use makesense::commands::search::search;
-use makesense::commands::search_on_web::search_on_web;
-use makesense::commands::view_page::view_page;
-use makesense::commands::view_page_on_web::view_page_on_web;
+mod cs;
+use cs::commands::get_code::get_code;
+use cs::commands::get_icon::get_icon;
+use cs::commands::get_page_json::get_page_json;
+use cs::commands::get_pages::get_pages;
+use cs::commands::get_pages_json::get_pages_json;
+use cs::commands::get_search_json::get_search_json;
+use cs::commands::get_table::get_table;
+use cs::commands::search::search;
+use cs::commands::search_on_web::search_on_web;
+use cs::commands::view_page::view_page;
+use cs::commands::view_page_on_web::view_page_on_web;
 use keyring::Entry;
-use makesense::commands::view_project_on_web::view_project_on_web;
-use makesense::utils::get_current_project::get_current_project;
-use makesense::utils::set_current_project::set_current_project;
+use cs::commands::view_project_on_web::view_project_on_web;
+use cs::utils::get_current_project::get_current_project;
+use cs::utils::set_current_project::set_current_project;
 
 #[derive(Parser)]
 struct Args {

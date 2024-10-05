@@ -1,5 +1,5 @@
 use serde::{Deserialize, Serialize};
-use crate::makesense::models::page_in_project::PageInProject;
+use crate::cs::models::page_in_project::PageInProject;
 
 #[derive(Deserialize, Serialize, Debug)]
 pub struct Pages {

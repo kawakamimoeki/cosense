@@ -5,12 +5,12 @@ edition = "2021"
 authors = ["Kawakami Moeki <hi@.moeki.org>"]
 description = "A tool for interacting with Cosense API"
 license = "MIT"
-repository = "https://github.com/kawakamimoeki/makesense"
+repository = "https://github.com/kawakamimoeki/cs"
 keywords = ["cosense", "api", "tool"]
 categories = ["command-line-utilities", "network-programming"]
 readme = "README.md"
-homepage = "https://github.com/kawakamimoeki/makesense"
-documentation = "https://github.com/kawakamimoeki/makesense"
+homepage = "https://github.com/kawakamimoeki/cs"
+documentation = "https://github.com/kawakamimoeki/cs"
 
 [dependencies]
 clap = { version = "4.5.19", features = ["derive"] }

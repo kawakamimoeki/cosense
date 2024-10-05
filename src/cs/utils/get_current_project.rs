@@ -1,4 +1,4 @@
-use crate::makesense::utils::load_config::load_config;
+use crate::cs::utils::load_config::load_config;
 
 pub fn get_current_project() -> String {
   let config = load_config();

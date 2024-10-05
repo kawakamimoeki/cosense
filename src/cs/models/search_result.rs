@@ -1,6 +1,6 @@
 use serde::{Deserialize, Serialize};
-use crate::makesense::models::page_in_search_result::PageInSearchResult;
-use crate::makesense::models::query::Query;
+use crate::cs::models::page_in_search_result::PageInSearchResult;
+use crate::cs::models::query::Query;
 
 #[derive(Deserialize, Serialize, Debug)]
 pub struct SearchResult {

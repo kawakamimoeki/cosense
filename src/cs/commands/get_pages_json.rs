@@ -1,6 +1,6 @@
-use crate::makesense::models::pages::Pages;
+use crate::cs::models::pages::Pages;
 
-pub async fn get_pages(project: String, skip: Option<u32>, limit: Option<u32>, url: bool, sid: String, link: bool) -> Result<(), Box<dyn std::error::Error>> {
+pub async fn get_pages_json(project: String, pretty: bool, skip: Option<u32>, limit: Option<u32>, url: bool, sid: String) -> Result<(), Box<dyn std::error::Error>> {
   let client = reqwest::Client::new();
   let mut endpoint = format!("https://scrapbox.io/api/pages/{}", project);
 
@@ -26,12 +26,10 @@ pub async fn get_pages(project: String, skip: Option<u32>, limit: Option<u32>, u
 
   if response.status().is_success() {
       let pages: Pages = response.json().await?;
-      for title in pages.get_titles() {
-          if link {
-              println!("{}", format!("https://scrapbox.io/{}/{}", project, title));
-          } else {
-              println!("{}", title);
-          }
+      if pretty {
+          println!("{}", serde_json::to_string_pretty(&pages)?);
+      } else {
+          println!("{}", serde_json::to_string(&pages)?);
       }
   } else {
       println!("Error: {}", response.status());

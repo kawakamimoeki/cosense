@@ -1,5 +1,5 @@
-use crate::makesense::utils::get_config_path::get_config_path;
-use crate::makesense::utils::config::Config;
+use crate::cs::utils::get_config_path::get_config_path;
+use crate::cs::utils::config::Config;
 use std::fs;
 
 pub fn load_config() -> Config {

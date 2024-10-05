@@ -1,7 +1,6 @@
-use crate::makesense::models::search_result::SearchResult;
+use crate::cs::models::search_result::SearchResult;
 
-pub async fn get_search_json(project: String, pretty: bool, url: bool, query: String, sid: String) -> Result<(), Box<dyn std::error::Error>> {
-  let client = reqwest::Client::new();
+pub async fn search(project: String, query: String, url: bool, link: bool, sid: String) -> Result<(), Box<dyn std::error::Error>> {
   let endpoint = format!("https://scrapbox.io/api/pages/{}/search/query?q={}", project, query);
 
   if url {
@@ -9,15 +8,18 @@ pub async fn get_search_json(project: String, pretty: bool, url: bool, query: St
       return Ok(());
   }
 
+  let client = reqwest::Client::new();
   let response = client.get(endpoint)
       .header("Cookie", format!("connect.sid={}", sid))
       .send().await?;
   if response.status().is_success() {
       let result: SearchResult = response.json().await?;
-      if pretty {
-          println!("{}", serde_json::to_string_pretty(&result)?);
-      } else {
-          println!("{}", serde_json::to_string(&result)?);
+      for title in result.get_page_titles() {
+        if link {
+            println!("https://scrapbox.io/{}/{}", project, title ) 
+        } else {
+            println!("{}", title);
+        }
       }
   } else {
       println!("Error: {}", response.status());
