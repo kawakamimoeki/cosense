@@ -110,8 +110,8 @@ enum SubCommands {
         /// Get URL of API
         url: bool,
     },
-    /// Search query
-    Search {
+    /// Find pages
+    Find {
         /// Search query
         query: String,
         #[clap(short, long)]
@@ -189,7 +189,7 @@ async fn main() -> Result<(), Box<dyn std::error::Error>> {
         SubCommands::Icon { page, url } => {
             get_icon(project, page, url, sid).await?;
         }
-        SubCommands::Search { url, query, json, pretty, web, link } => {
+        SubCommands::Find { url, query, json, pretty, web, link } => {
             if json {
                 get_search_json(project, pretty, url, query, sid).await?;
             } else if web {
