@@ -61,7 +61,6 @@ Move-Item .\mks.exe C:\Windows\System32\
 
 All commands support the following global options:
 - `--help`: Show help information for the command
-- `--version`: Show the version of Makesense
 
 ### Login
 
