@@ -17,7 +17,7 @@
 ### Linux
 
 ```bash
-curl -L https://github.com/kawakamimoeki/cs/releases/download/v0.1.8/cs-linux-amd64 -o cs
+curl -L https://github.com/kawakamimoeki/cs/releases/download/v0.1.9/cs-linux-amd64 -o cs
 chmod +x cs
 sudo mv cs /usr/local/bin/
 ```
@@ -26,7 +26,7 @@ sudo mv cs /usr/local/bin/
 ### macOS
 
 ```bash
-curl -L https://github.com/kawakamimoeki/cs/releases/download/v0.1.8/cs-macos-amd64 -o cs
+curl -L https://github.com/kawakamimoeki/cs/releases/download/v0.1.9/cs-macos-amd64 -o cs
 chmod +x cs
 sudo mv cs /usr/local/bin/
 ```
@@ -34,7 +34,7 @@ sudo mv cs /usr/local/bin/
 ### Windows
 
 ```powershell
-Invoke-WebRequest https://github.com/kawakamimoeki/cs/releases/download/v0.1.8/cs-windows-amd64.exe -OutFile cs.exe
+Invoke-WebRequest https://github.com/kawakamimoeki/cs/releases/download/v0.1.9/cs-windows-amd64.exe -OutFile cs.exe
 Move-Item .\cs.exe C:\Windows\System32\
 ```
 
