@@ -50,9 +50,9 @@ Move-Item .\cs.exe C:\Windows\System32\
    cs project your-project
    ```
 
-3. Search within a project:
+3. Find pages:
    ```
-   cs search "your search query" --link
+   cs find "your search query" --link
    ```
 
 ## Detailed Usage
@@ -170,12 +170,12 @@ Example:
 cs icon my-page
 ```
 
-### Search
+### Find
 
-Search within a project:
+Find pages:
 
 ```
-cs search <query> [options]
+cs find <query> [options]
 ```
 
 Options:
@@ -186,7 +186,7 @@ Options:
 
 Example:
 ```
-cs search "important topic" --link
+cs find "important topic" --link
 ```
 
 ## License
