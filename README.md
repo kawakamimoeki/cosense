@@ -139,9 +139,9 @@ Options:
 
 Example:
 ```
-cs get my-page/my-code-snippet --type code
-cs get my-page/my-table-name --type table
-cs get my-page --type icon
+cs get my-page/my-code-snippet --resource code
+cs get my-page/my-table-name --resource table
+cs get my-page --resource icon
 ```
 
 ### Find
