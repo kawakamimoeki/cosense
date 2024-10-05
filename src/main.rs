@@ -42,7 +42,7 @@ enum SubCommands {
         /// Open page on Browser
         web: bool,
     },
-    /// Get JSON data of project or page
+    /// List pages of project
     List {
         #[clap(short, long)]
         /// Get JSON
