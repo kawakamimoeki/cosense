@@ -106,6 +106,7 @@ enum SubCommands {
         /// Get URL of API
         url: bool,
     },
+    /// Search pages in the project
     Search {
         /// project name
         project: String,
