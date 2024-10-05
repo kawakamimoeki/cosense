@@ -66,7 +66,7 @@ enum SubCommands {
         /// Open page on Browser
         web: bool,
     },
-    /// Open page on Browser
+    /// Open page
     View {
         #[clap(short, long)]
         /// Get JSON
