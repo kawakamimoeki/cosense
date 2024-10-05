@@ -69,8 +69,9 @@ enum SubCommands {
     Create {
         /// Page name
         page: String,
+        #[clap(short, long)]
         /// Body of page
-        body: String,
+        body: Option<String>,
         #[clap(short, long)]
         /// Get URL of API
         url: bool,

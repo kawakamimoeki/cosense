@@ -117,15 +117,16 @@ mks pages my-project --limit 20 --link
 Create a new page with content:
 
 ```
-mks create <page> <body> [options]
+mks create <page> [options]
 ```
 
 Options:
+- `--body` or `-b`: Specify a body
 - `--url` or `-u`: Display the API URL instead of creating the page
 
 Example:
 ```
-mks create "My New Page" "This is the content of my new page."
+mks create my-project/my-page --body "This is the content of my new page."
 ```
 
 ### Page

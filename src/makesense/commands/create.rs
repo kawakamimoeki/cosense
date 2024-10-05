@@ -1,5 +1,5 @@
-pub async fn create(page: String, body: String, url: bool) -> Result<(), Box<dyn std::error::Error>> {
-  let endpoint = format!("https://scrapbox.io/{}?body={}", page, body);
+pub async fn create(page: String, body: Option<String>, url: bool) -> Result<(), Box<dyn std::error::Error>> {
+  let endpoint = format!("https://scrapbox.io/{}?body={}", page, body.unwrap_or("".to_string()));
   if url {
       println!("{}", endpoint);
       return Ok(());
