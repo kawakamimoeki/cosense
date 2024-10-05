@@ -17,7 +17,7 @@
 ### Linux
 
 ```bash
-curl -L https://github.com/kawakamimoeki/cs/releases/download/v0.1.10/cs-linux-amd64 -o cs
+curl -L https://github.com/kawakamimoeki/cs/releases/download/v0.1.11/cs-linux-amd64 -o cs
 chmod +x cs
 sudo mv cs /usr/local/bin/
 ```
@@ -26,7 +26,7 @@ sudo mv cs /usr/local/bin/
 ### macOS
 
 ```bash
-curl -L https://github.com/kawakamimoeki/cs/releases/download/v0.1.10/cs-macos-amd64 -o cs
+curl -L https://github.com/kawakamimoeki/cs/releases/download/v0.1.11/cs-macos-amd64 -o cs
 chmod +x cs
 sudo mv cs /usr/local/bin/
 ```

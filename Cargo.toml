@@ -1,6 +1,6 @@
 [package]
 name = "cs"
-version = "0.1.10"
+version = "0.1.11"
 edition = "2021"
 authors = ["Kawakami Moeki <hi@.moeki.org>"]
 description = "A tool for interacting with Cosense API"
