@@ -107,7 +107,7 @@ cs list --limit 20 --link
 View or open a page:
 
 ```
-cs page <page> [options]
+cs view <page> [options]
 ```
 
 Options:
@@ -118,56 +118,30 @@ Options:
 
 Examples:
 ```
-cs page my-page
-cs page my-page --web
+cs view my-page
+cs view my-page --web
 ```
 
-### Code
+### Get resource
 
-Retrieve code snippets from a page:
-
-```
-cs code <name> [options]
-```
-
-Options:
-- `--url` or `-u`: Display the API URL instead of fetching the code
-
-Example:
-```
-cs code my-page/my-code-snippet
-```
-
-### Table
-
-Extract table data in CSV format from a page:
+Get resource from a page:
 
 ```
-cs table <name> [options]
+cs get <name> [options]
 ```
 
 Options:
-- `--url` or `-u`: Display the API URL instead of fetching the table
+- `--url` or `-u`: Display the API URL instead of fetching the resource
+- `--resource` or `-t`: Specify the type of resource to retrieve
+  - `code`: Retrieve code snippets
+  - `table`: Retrieve tables
+  - `icon`: Retrieve icons
 
 Example:
 ```
-cs table my-page/my-table-name
-```
-
-### Icon
-
-Fetch the icon of a page:
-
-```
-cs icon <page> [options]
-```
-
-Options:
-- `--url` or `-u`: Display the API URL instead of fetching the icon
-
-Example:
-```
-cs icon my-page
+cs get my-page/my-code-snippet --type code
+cs get my-page/my-table-name --type table
+cs get my-page --type icon
 ```
 
 ### Find
@@ -186,7 +160,7 @@ Options:
 
 Example:
 ```
-cs find "important topic" --link
+cs search "important topic" --link
 ```
 
 ## License

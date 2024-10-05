@@ -86,29 +86,16 @@ enum SubCommands {
         /// Get URL of API
         url: bool,
     },
-    /// Get code of page
-    Code {
-        /// Name of code
+    /// Get resource of page
+    Get {
+        /// Resource name
         name: String,
         #[clap(short, long)]
         /// Get URL of API
         url: bool,
-    },
-    /// Get table CSV of page
-    Table {
-        /// Name of table
-        name: String,
         #[clap(short, long)]
-        /// Get URL of API
-        url: bool,
-    },
-    /// Get icon of page
-    Icon {
-        /// Page name
-        page: String,
-        #[clap(short, long)]
-        /// Get URL of API
-        url: bool,
+        /// Get type of resource (code, table, icon)
+        resource: Option<String>,
     },
     /// Find pages
     Find {
@@ -180,14 +167,16 @@ async fn main() -> Result<(), Box<dyn std::error::Error>> {
                 view_page(project, page, url, sid).await?;
             }
         }
-        SubCommands::Code { name, url } => {
-            get_code(project, name, url, sid).await?;
-        }
-        SubCommands::Table { name, url } => {
-            get_table(project, name, url, sid).await?;
-        }
-        SubCommands::Icon { page, url } => {
-            get_icon(project, page, url, sid).await?;
+        SubCommands::Get { name, url, resource } => {
+            if resource == Some("code".to_string()) {
+                get_code(project, name, url, sid).await?;
+            } else if resource == Some("table".to_string()) {
+                get_table(project, name, url, sid).await?;
+            } else if resource == Some("icon".to_string()) {
+                get_icon(project, name, url, sid).await?;
+            } else {
+                get_code(project, name, url, sid).await?;
+            }
         }
         SubCommands::Find { url, query, json, pretty, web, link } => {
             if json {
