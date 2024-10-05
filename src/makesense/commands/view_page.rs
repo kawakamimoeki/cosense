@@ -1,0 +1,24 @@
+use crate::makesense::models::page::Page;
+
+pub async fn view_page(page: String, url: bool, sid: String) -> Result<(), Box<dyn std::error::Error>> {
+  let endpoint = format!("https://scrapbox.io/api/pages/{}", page);
+
+  if url {
+      println!("{}", endpoint);
+      return Ok(());
+  }
+
+  let client = reqwest::Client::new();
+  let response = client.get(endpoint)
+      .header("Cookie", format!("connect.sid={}", sid))
+      .send().await?;
+  if response.status().is_success() {
+      let page: Page = response.json().await?;
+      for text in page.get_line_text() {
+          println!("{}", text);
+      }
+  } else {
+      println!("Error: {}", response.status());
+  }
+  Ok(())
+}
