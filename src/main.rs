@@ -67,7 +67,7 @@ enum SubCommands {
         web: bool,
     },
     /// Open page on Browser
-    Page {
+    View {
         #[clap(short, long)]
         /// Get JSON
         json: bool,
@@ -158,7 +158,7 @@ async fn main() -> Result<(), Box<dyn std::error::Error>> {
                 get_pages(project, skip, limit, url, sid, link).await?;
             }
         }
-        SubCommands::Page { json, pretty, page, web, url, body } => {
+        SubCommands::View { json, pretty, page, web, url, body } => {
             if json {
                 get_page_json(project, page, pretty, url, sid).await?;
             } else if web {
