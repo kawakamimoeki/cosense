@@ -124,7 +124,7 @@ async fn main() -> Result<(), Box<dyn std::error::Error>> {
     let mut project = get_current_project();
     let args = Args::parse();
 
-    let entry = Entry::new("cosense", "default");
+    let entry = Entry::new("cs", "default");
     let sid = match entry.expect("Failed to create keyring entry").get_password() {
         Ok(password) => password,
         Err(_) => String::new(),
@@ -132,7 +132,7 @@ async fn main() -> Result<(), Box<dyn std::error::Error>> {
 
     match args.subcommand {
         SubCommands::Login { sid } => {
-            let entry = Entry::new("cosense", "default");
+            let entry = Entry::new("cs", "default");
             let _ = entry.expect("Failed to create keyring entry").set_password(&sid);
         }
         SubCommands::Switch { name, url, web } => {
