@@ -31,8 +31,8 @@ enum SubCommands {
         /// Cosense `connect.sid` cookie
         sid: String,
     },
-    /// Get current project
-    Project {
+    /// Switch current project
+    Switch {
         /// Set current project
         name: Option<String>,
         #[clap(short, long)]
@@ -43,7 +43,7 @@ enum SubCommands {
         web: bool,
     },
     /// List pages of project
-    List {
+    Ls {
         #[clap(short, long)]
         /// Get JSON
         json: bool,
@@ -135,7 +135,7 @@ async fn main() -> Result<(), Box<dyn std::error::Error>> {
             let entry = Entry::new("cosense", "default");
             let _ = entry.expect("Failed to create keyring entry").set_password(&sid);
         }
-        SubCommands::Project { name, url, web } => {
+        SubCommands::Switch { name, url, web } => {
             if let Some(name) = name {
                 set_current_project(&name);
                 project = name;
@@ -149,7 +149,7 @@ async fn main() -> Result<(), Box<dyn std::error::Error>> {
                 println!("{}", project);
             }
         }
-        SubCommands::List { json, pretty, skip, limit, url, link, web } => {
+        SubCommands::Ls { json, pretty, skip, limit, url, link, web } => {
             if json {
                 get_pages_json(project, pretty, skip, limit, url, sid).await?;
             } else if web {

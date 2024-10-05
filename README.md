@@ -75,7 +75,7 @@ cs login <your-connect-sid>
 Set a project:
 
 ```
-cs project <project>
+cs switch <project>
 ```
 
 Options:
@@ -87,7 +87,7 @@ Options:
 List page titles for a project:
 
 ```
-cs list [options]
+cs ls [options]
 ```
 
 Options:
@@ -99,7 +99,7 @@ Options:
 
 Example:
 ```
-cs list --limit 20 --link
+cs ls --limit 20 --link
 ```
 
 ### Page
