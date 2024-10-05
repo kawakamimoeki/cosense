@@ -157,6 +157,7 @@ async fn main() -> Result<(), Box<dyn std::error::Error>> {
                 println!("https://scrapbox.io/{}", project);
             } else if web {
                 view_project_on_web(project, url).await?;
+            } else if project.is_empty() {
             } else {
                 println!("{}", project);
             }

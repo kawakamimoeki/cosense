@@ -13,8 +13,6 @@ pub async fn get_table(project: String, name: String, url: bool, sid: String) ->
   if response.status().is_success() {
       let table: String = response.text().await?;
       println!("{}", table);
-  } else {
-      println!("Error: {}", response.status());
   }
 
   Ok(())

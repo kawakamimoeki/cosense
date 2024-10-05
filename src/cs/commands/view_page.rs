@@ -17,8 +17,6 @@ pub async fn view_page(project: String, page: String, url: bool, sid: String) ->
       for text in page.get_line_text() {
           println!("{}", text);
       }
-  } else {
-      println!("Error: {}", response.status());
   }
   Ok(())
 }

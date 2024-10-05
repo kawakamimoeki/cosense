@@ -13,8 +13,6 @@ pub async fn get_icon(project: String, page: String, url: bool, sid: String) -> 
   if response.status().is_success() {
       let icon: String = response.text().await?;
       println!("{}", icon);
-  } else {
-      println!("Error: {}", response.status());
   }
 
   Ok(())

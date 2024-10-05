@@ -19,8 +19,6 @@ pub async fn get_search_json(project: String, pretty: bool, url: bool, query: St
       } else {
           println!("{}", serde_json::to_string(&result)?);
       }
-  } else {
-      println!("Error: {}", response.status());
   }
 
   Ok(())

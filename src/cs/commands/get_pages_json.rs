@@ -31,8 +31,6 @@ pub async fn get_pages_json(project: String, pretty: bool, skip: Option<u32>, li
       } else {
           println!("{}", serde_json::to_string(&pages)?);
       }
-  } else {
-      println!("Error: {}", response.status());
   }
 
   Ok(())

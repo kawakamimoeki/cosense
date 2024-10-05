@@ -14,8 +14,6 @@ pub async fn get_code(project: String, name: String, url: bool, sid: String) -> 
   if response.status().is_success() {
       let code: String = response.text().await?;
       println!("{}", code);
-  } else {
-      println!("Error: {}", response.status());
   }
 
   Ok(())

@@ -20,8 +20,6 @@ pub async fn get_page_json(project: String, page: String, pretty: bool, url: boo
       } else {
           println!("{}", serde_json::to_string(&page)?);
       }
-  } else {
-      println!("Error: {}", response.status());
   }
 
   Ok(())

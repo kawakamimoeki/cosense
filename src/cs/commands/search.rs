@@ -21,8 +21,6 @@ pub async fn search(project: String, query: String, url: bool, link: bool, sid: 
             println!("{}", title);
         }
       }
-  } else {
-      println!("Error: {}", response.status());
   }
 
   Ok(())

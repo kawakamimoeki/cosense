@@ -33,8 +33,6 @@ pub async fn get_pages(project: String, skip: Option<u32>, limit: Option<u32>, u
               println!("{}", title);
           }
       }
-  } else {
-      println!("Error: {}", response.status());
   }
 
   Ok(())
