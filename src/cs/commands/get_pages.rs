@@ -26,6 +26,7 @@ pub async fn get_pages(project: String, skip: Option<u32>, limit: Option<u32>, u
 
   if response.status().is_success() {
       let pages: Pages = response.json().await?;
+      println!("{:?}", pages);
       for title in pages.get_titles() {
           if link {
               println!("{}", format!("https://scrapbox.io/{}/{}", project, title));

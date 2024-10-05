@@ -7,14 +7,14 @@ pub struct RelatedPage {
     #[serde(rename = "titleLc")]
     title_lc: String,
     image: Option<String>,
-    descriptions: Vec<String>,
+    descriptions: Option<Vec<String>>,
     #[serde(rename = "linksLc")]
-    links_lc: Vec<String>,
+    links_lc: Option<Vec<String>>,
     linked: Option<u32>,
     #[serde(rename = "pageRank")]
     page_rank: f32,
     #[serde(rename = "infoboxDisableLinks")]
-    infobox_disable_links: Vec<String>,
+    infobox_disable_links: Option<Vec<String>>,
     created: Option<u32>,
     updated: Option<u32>,
     accessed: Option<u32>,

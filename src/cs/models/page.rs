@@ -9,14 +9,14 @@ pub struct Page {
     title: String,
     image: Option<String>,
     descriptions: Vec<String>,
-    user: User,
+    user: Option<User>,
     #[serde(rename = "lastUpdateUser")]
-    last_update_user: User,
+    last_update_user: Option<User>,
     pin: u64,
     views: Option<u32>,
     linked: Option<u32>,
     #[serde(rename = "commitId")]
-    commit_id: String,
+    commit_id: Option<String>,
     created: Option<u32>,
     updated: Option<u32>,
     accessed: Option<u32>,
@@ -40,15 +40,15 @@ pub struct Page {
     icons: Vec<String>,
     files: Vec<String>,
     #[serde(rename = "infoboxDefinition")]
-    infobox_definition: Vec<String>,
+    infobox_definition: Option<Vec<String>>,
     #[serde(rename = "infoboxResult")]
-    infobox_result: Vec<String>,
+    infobox_result: Option<Vec<String>>,
     #[serde(rename = "infoboxDisableLinks")]
-    infobox_disable_links: Vec<String>,
+    infobox_disable_links: Option<Vec<String>>,
     #[serde(rename = "relatedPages")]
-    related_pages: RelatedPages,
+    related_pages: Option<RelatedPages>,
     #[serde(rename = "collaborators")]
-    collaborators: Vec<String>,
+    collaborators: Vec<User>,
 }
 
 impl Page {

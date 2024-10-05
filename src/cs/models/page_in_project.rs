@@ -16,7 +16,7 @@ pub struct PageInProject {
     views: Option<u32>,
     linked: Option<u32>,
     #[serde(rename = "commitId")]
-    commit_id: String,
+    commit_id: Option<String>,
     created: Option<u32>,
     updated: Option<u32>,
     accessed: Option<u32>,
