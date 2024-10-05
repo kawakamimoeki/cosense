@@ -1,4 +1,4 @@
-<h1 align="center">Makesense</h1>
+<h1 align="center">CS</h1>
 
 <p align="center">
   <strong>An unofficial CLI tool for seamless interaction with the Cosense API</strong>
@@ -17,42 +17,42 @@
 ### Linux
 
 ```bash
-curl -L https://github.com/kawakamimoeki/makesense/releases/download/v0.1.5/makesense-linux-amd64 -o mks
-chmod +x mks
-sudo mv mks /usr/local/bin/
+curl -L https://github.com/kawakamimoeki/makesense/releases/download/v0.1.5/cs-linux-amd64 -o cs
+chmod +x cs
+sudo mv cs /usr/local/bin/
 ```
 
 
 ### macOS
 
 ```bash
-curl -L https://github.com/kawakamimoeki/makesense/releases/download/v0.1.5/makesense-macos-amd64 -o mks
-chmod +x mks
-sudo mv mks /usr/local/bin/
+curl -L https://github.com/kawakamimoeki/makesense/releases/download/v0.1.5/cs-macos-amd64 -o cs
+chmod +x cs
+sudo mv cs /usr/local/bin/
 ```
 
 ### Windows
 
 ```powershell
-Invoke-WebRequest https://github.com/kawakamimoeki/makesense/releases/download/v0.1.5/makesense-windows-amd64.exe -OutFile mks.exe
-Move-Item .\mks.exe C:\Windows\System32\
+Invoke-WebRequest https://github.com/kawakamimoeki/makesense/releases/download/v0.1.5/cs-windows-amd64.exe -OutFile cs.exe
+Move-Item .\cs.exe C:\Windows\System32\
 ```
 
 ## Quick Start
 
 1. Login to your Cosense account:
    ```
-   mks login your-connect-sid
+   cs login your-connect-sid
    ```
 
 2. Set a project:
    ```
-   mks project your-project
+   cs project your-project
    ```
 
 3. Search within a project:
    ```
-   mks search "your search query" --link
+   cs search "your search query" --link
    ```
 
 ## Detailed Usage
@@ -67,7 +67,7 @@ All commands support the following global options:
 Authenticate with Cosense using your `connect.sid` cookie:
 
 ```
-mks login <your-connect-sid>
+cs login <your-connect-sid>
 ```
 
 ### Project
@@ -75,7 +75,7 @@ mks login <your-connect-sid>
 Set a project:
 
 ```
-mks project <project>
+cs project <project>
 ```
 
 Options:
@@ -87,7 +87,7 @@ Options:
 List page titles for a project:
 
 ```
-mks list [options]
+cs list [options]
 ```
 
 Options:
@@ -99,7 +99,7 @@ Options:
 
 Example:
 ```
-mks list --limit 20 --link
+cs list --limit 20 --link
 ```
 
 ### Page
@@ -107,7 +107,7 @@ mks list --limit 20 --link
 View or open a page:
 
 ```
-mks page <page> [options]
+cs page <page> [options]
 ```
 
 Options:
@@ -118,8 +118,8 @@ Options:
 
 Examples:
 ```
-mks page my-page
-mks page my-page --web
+cs page my-page
+cs page my-page --web
 ```
 
 ### Code
@@ -127,7 +127,7 @@ mks page my-page --web
 Retrieve code snippets from a page:
 
 ```
-mks code <name> [options]
+cs code <name> [options]
 ```
 
 Options:
@@ -135,7 +135,7 @@ Options:
 
 Example:
 ```
-mks code my-page/my-code-snippet
+cs code my-page/my-code-snippet
 ```
 
 ### Table
@@ -143,7 +143,7 @@ mks code my-page/my-code-snippet
 Extract table data in CSV format from a page:
 
 ```
-mks table <name> [options]
+cs table <name> [options]
 ```
 
 Options:
@@ -151,7 +151,7 @@ Options:
 
 Example:
 ```
-mks table my-page/my-table-name
+cs table my-page/my-table-name
 ```
 
 ### Icon
@@ -159,7 +159,7 @@ mks table my-page/my-table-name
 Fetch the icon of a page:
 
 ```
-mks icon <page> [options]
+cs icon <page> [options]
 ```
 
 Options:
@@ -167,7 +167,7 @@ Options:
 
 Example:
 ```
-mks icon my-page
+cs icon my-page
 ```
 
 ### Search
@@ -175,7 +175,7 @@ mks icon my-page
 Search within a project:
 
 ```
-mks search <query> [options]
+cs search <query> [options]
 ```
 
 Options:
@@ -186,7 +186,7 @@ Options:
 
 Example:
 ```
-mks search "important topic" --link
+cs search "important topic" --link
 ```
 
 ## License
