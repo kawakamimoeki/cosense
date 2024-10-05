@@ -17,7 +17,7 @@
 ### Linux
 
 ```bash
-curl -L https://github.com/kawakamimoeki/makesense/releases/download/v0.1.3/makesense-linux-amd64 -o mks
+curl -L https://github.com/kawakamimoeki/makesense/releases/download/v0.1.4/makesense-linux-amd64 -o mks
 chmod +x mks
 sudo mv mks /usr/local/bin/
 ```
@@ -26,7 +26,7 @@ sudo mv mks /usr/local/bin/
 ### macOS
 
 ```bash
-curl -L https://github.com/kawakamimoeki/makesense/releases/download/v0.1.3/makesense-macos-amd64 -o mks
+curl -L https://github.com/kawakamimoeki/makesense/releases/download/v0.1.4/makesense-macos-amd64 -o mks
 chmod +x mks
 sudo mv mks /usr/local/bin/
 ```
@@ -34,7 +34,7 @@ sudo mv mks /usr/local/bin/
 ### Windows
 
 ```powershell
-Invoke-WebRequest https://github.com/kawakamimoeki/makesense/releases/download/v0.1.3/makesense-windows-amd64.exe -OutFile mks.exe
+Invoke-WebRequest https://github.com/kawakamimoeki/makesense/releases/download/v0.1.4/makesense-windows-amd64.exe -OutFile mks.exe
 Move-Item .\mks.exe C:\Windows\System32\
 ```
 
