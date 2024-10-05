@@ -1,7 +1,6 @@
 use clap::Parser;
 use clap::Subcommand;
 mod makesense;
-use makesense::commands::create::create;
 use makesense::commands::get_code::get_code;
 use makesense::commands::get_icon::get_icon;
 use makesense::commands::get_pages::get_pages;
@@ -65,17 +64,6 @@ enum SubCommands {
         /// Get link of pages
         link: bool,
     },
-    /// Create page with body on Browser
-    Create {
-        /// Page name
-        page: String,
-        #[clap(short, long)]
-        /// Body of page
-        body: Option<String>,
-        #[clap(short, long)]
-        /// Get URL of API
-        url: bool,
-    },
     /// Open page on Browser
     Page {
         /// Page name
@@ -83,6 +71,9 @@ enum SubCommands {
         #[clap(short, long)]
         /// Open page on Browser
         web: bool,
+        #[clap(short, long)]
+        /// Get URL of API
+        body: Option<String>,
         #[clap(short, long)]
         /// Get URL of API
         url: bool,
@@ -158,12 +149,9 @@ async fn main() -> Result<(), Box<dyn std::error::Error>> {
                 get_pages(project, skip, limit, url, sid, link).await?;
             }
         }
-        SubCommands::Create { page, body, url } => {
-            create(page, body, url).await?;
-        }
-        SubCommands::Page { page, web, url } => {
+        SubCommands::Page { page, web, url, body } => {
             if web {
-                view_page_on_web(page, url).await?;
+                view_page_on_web(page, url, body).await?;
             } else {
                 view_page(page, url, sid).await?;
             }

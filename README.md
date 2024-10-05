@@ -112,23 +112,6 @@ Example:
 mks pages my-project --limit 20 --link
 ```
 
-### Create
-
-Create a new page with content:
-
-```
-mks create <page> [options]
-```
-
-Options:
-- `--body` or `-b`: Specify a body
-- `--url` or `-u`: Display the API URL instead of creating the page
-
-Example:
-```
-mks create my-project/my-page --body "This is the content of my new page."
-```
-
 ### Page
 
 View or open a page:
@@ -138,6 +121,7 @@ mks page <page> [options]
 ```
 
 Options:
+- `--body` or `b`: Add body to page
 - `--web` or `-w`: Open the page in a web browser
 - `--url` or `-u`: Display the API URL instead of fetching the page
 
