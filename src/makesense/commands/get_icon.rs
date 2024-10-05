@@ -1,5 +1,5 @@
-pub async fn get_icon(page: String, url: bool, sid: String) -> Result<(), Box<dyn std::error::Error>> {
-  let endpoint = format!("https://scrapbox.io/api/pages/{}/icon", page);
+pub async fn get_icon(project: String, page: String, url: bool, sid: String) -> Result<(), Box<dyn std::error::Error>> {
+  let endpoint = format!("https://scrapbox.io/api/pages/{}/{}/icon", project, page);
 
   if url {
       println!("{}", endpoint);

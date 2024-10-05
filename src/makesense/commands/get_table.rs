@@ -1,5 +1,5 @@
-pub async fn get_table(page: String, name: String, url: bool, sid: String) -> Result<(), Box<dyn std::error::Error>> {
-  let endpoint = format!("https://scrapbox.io/api/table/{}/{}.csv", page, name);
+pub async fn get_table(project: String, name: String, url: bool, sid: String) -> Result<(), Box<dyn std::error::Error>> {
+  let endpoint = format!("https://scrapbox.io/api/table/{}/{}.csv", project, name);
 
   if url {
       println!("{}", endpoint);

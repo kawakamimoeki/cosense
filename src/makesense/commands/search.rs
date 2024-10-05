@@ -1,6 +1,6 @@
 use crate::makesense::models::search_result::SearchResult;
 
-pub async fn search(query: String, url: bool, project: String, link: bool, sid: String) -> Result<(), Box<dyn std::error::Error>> {
+pub async fn search(project: String, query: String, url: bool, link: bool, sid: String) -> Result<(), Box<dyn std::error::Error>> {
   let endpoint = format!("https://scrapbox.io/api/pages/{}/search/query?q={}", project, query);
 
   if url {

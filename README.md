@@ -45,14 +45,14 @@ Move-Item .\mks.exe C:\Windows\System32\
    mks login your-connect-sid
    ```
 
-2. Fetch JSON data from a project:
+2. Set a project:
    ```
-   mks json your-project --pretty
+   mks project your-project
    ```
 
 3. Search within a project:
    ```
-   mks search your-project "your search query" --link
+   mks search "your search query" --link
    ```
 
 ## Detailed Usage
@@ -70,34 +70,24 @@ Authenticate with Cosense using your `connect.sid` cookie:
 mks login <your-connect-sid>
 ```
 
-### JSON
+### Project
 
-Retrieve JSON data from a project or page:
+Set a project:
 
 ```
-mks json <resource> [options]
+mks project <project>
 ```
 
 Options:
-- `--pretty` or `-p`: Format the JSON output for better readability
-- `--skip <value>` or `-s <value>`: Skip a number of pages (for project JSON)
-- `--limit <value>` or `-l <value>`: Limit the number of pages returned (for project JSON)
-- `--url` or `-u`: Display the API URL instead of fetching data
-- `--query <value>` or `-q <value>`: Specify a search query (for search JSON)
+- `--url` or `-u`: Display the API URL instead of fetching the page
+- `--web` or `-w`: Open the project in a web browser
 
-Examples:
-```
-mks json my-project --pretty
-mks json my-project/my-page --url
-mks json my-project --query "search term" --limit 10
-```
-
-### Pages
+### List
 
 List page titles for a project:
 
 ```
-mks pages <project> [options]
+mks list [options]
 ```
 
 Options:
@@ -105,10 +95,11 @@ Options:
 - `--limit <value>` or `-l <value>`: Limit the number of pages returned
 - `--url` or `-u`: Display the API URL instead of fetching data
 - `--link`: Include page links in the output
+- `--json` or `-j`: Display the API URL instead of fetching the page
 
 Example:
 ```
-mks pages my-project --limit 20 --link
+mks list --limit 20 --link
 ```
 
 ### Page
@@ -123,11 +114,12 @@ Options:
 - `--body` or `b`: Add body to page
 - `--web` or `-w`: Open the page in a web browser
 - `--url` or `-u`: Display the API URL instead of fetching the page
+- `--json` or `-j`: Display the API URL instead of fetching the page
 
 Examples:
 ```
-mks page my-project/my-page
-mks page my-project/my-page --web
+mks page my-page
+mks page my-page --web
 ```
 
 ### Code
@@ -135,7 +127,7 @@ mks page my-project/my-page --web
 Retrieve code snippets from a page:
 
 ```
-mks code <page> <name> [options]
+mks code <name> [options]
 ```
 
 Options:
@@ -143,7 +135,7 @@ Options:
 
 Example:
 ```
-mks code my-project/my-page my-code-snippet
+mks code my-page/my-code-snippet
 ```
 
 ### Table
@@ -151,7 +143,7 @@ mks code my-project/my-page my-code-snippet
 Extract table data in CSV format from a page:
 
 ```
-mks table <page> <name> [options]
+mks table <name> [options]
 ```
 
 Options:
@@ -159,7 +151,7 @@ Options:
 
 Example:
 ```
-mks table my-project/my-page my-table-name
+mks table my-page/my-table-name
 ```
 
 ### Icon
@@ -175,7 +167,7 @@ Options:
 
 Example:
 ```
-mks icon my-project/my-page
+mks icon my-page
 ```
 
 ### Search
@@ -183,16 +175,18 @@ mks icon my-project/my-page
 Search within a project:
 
 ```
-mks search <project> <query> [options]
+mks search <query> [options]
 ```
 
 Options:
 - `--url` or `-u`: Display the API URL instead of performing the search
 - `--link` or `-l`: Include links to the search results
+- `--web` or `-w`: Open the search results in a web browser
+- `--json` or `-j`: Display the API URL instead of performing the search
 
 Example:
 ```
-mks search my-project "important topic" --link
+mks search "important topic" --link
 ```
 
 ## License

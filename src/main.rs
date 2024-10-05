@@ -3,15 +3,19 @@ use clap::Subcommand;
 mod makesense;
 use makesense::commands::get_code::get_code;
 use makesense::commands::get_icon::get_icon;
-use makesense::commands::get_pages::get_pages;
-use makesense::commands::get_project_json::get_project_json;
 use makesense::commands::get_page_json::get_page_json;
+use makesense::commands::get_pages::get_pages;
+use makesense::commands::get_pages_json::get_pages_json;
 use makesense::commands::get_search_json::get_search_json;
 use makesense::commands::get_table::get_table;
 use makesense::commands::search::search;
+use makesense::commands::search_on_web::search_on_web;
 use makesense::commands::view_page::view_page;
 use makesense::commands::view_page_on_web::view_page_on_web;
 use keyring::Entry;
+use makesense::commands::view_project_on_web::view_project_on_web;
+use makesense::utils::get_current_project::get_current_project;
+use makesense::utils::set_current_project::set_current_project;
 
 #[derive(Parser)]
 struct Args {
@@ -27,12 +31,24 @@ enum SubCommands {
         /// Cosense `connect.sid` cookie
         sid: String,
     },
-    /// Get JSON data of project or page
-    Json {
-        /// Project name or page name
-        resource: String,
+    /// Get current project
+    Project {
+        /// Set current project
+        name: Option<String>,
         #[clap(short, long)]
-        /// Get pretty JSON
+        /// Get URL of API
+        url: bool,
+        #[clap(short, long)]
+        /// Open page on Browser
+        web: bool,
+    },
+    /// Get JSON data of project or page
+    List {
+        #[clap(short, long)]
+        /// Get JSON
+        json: bool,
+        #[clap(short, long)]
+        /// Pretty JSON
         pretty: bool,
         #[clap(short, long)]
         /// Get skip of pages
@@ -40,32 +56,24 @@ enum SubCommands {
         #[clap(short, long)]
         /// Get limit of pages
         limit: Option<u32>,
-        #[clap(short, long)]
-        /// Get URL of API
-        url: bool,
-        #[clap(short, long)]
-        /// Search query
-        query: Option<String>,
-    },
-    /// Get page title list of project
-    Pages {
-        /// Project name
-        project: String,
-        #[clap(short, long)]
-        /// Get skip of pages
-        skip: Option<u32>,
         #[clap(long)]
-        /// Get limit of pages
-        limit: Option<u32>,
-        #[clap(short, long)]
         /// Get URL of API
         url: bool,
         #[clap(long)]
         /// Get link of pages
         link: bool,
+        #[clap(short, long)]
+        /// Open page on Browser
+        web: bool,
     },
     /// Open page on Browser
     Page {
+        #[clap(short, long)]
+        /// Get JSON
+        json: bool,
+        #[clap(short, long)]
+        /// Pretty JSON
+        pretty: bool,
         /// Page name
         page: String,
         #[clap(short, long)]
@@ -80,8 +88,6 @@ enum SubCommands {
     },
     /// Get code of page
     Code {
-        /// Page name
-        page: String,
         /// Name of code
         name: String,
         #[clap(short, long)]
@@ -90,8 +96,6 @@ enum SubCommands {
     },
     /// Get table CSV of page
     Table {
-        /// Page name
-        page: String,
         /// Name of table
         name: String,
         #[clap(short, long)]
@@ -106,23 +110,31 @@ enum SubCommands {
         /// Get URL of API
         url: bool,
     },
-    /// Search pages in the project
+    /// Search query
     Search {
-        /// project name
-        project: String,
         /// Search query
         query: String,
         #[clap(short, long)]
         /// Get URL of API
         url: bool,
         #[clap(short, long)]
-        // Get Link
+        /// Get JSON
+        json: bool,
+        #[clap(short, long)]
+        /// Pretty JSON
+        pretty: bool,
+        #[clap(short, long)]
+        /// Get link of pages
         link: bool,
+        #[clap(short, long)]
+        /// Open page on Browser
+        web: bool,
     },
 }
 
 #[tokio::main]
 async fn main() -> Result<(), Box<dyn std::error::Error>> {
+    let mut project = get_current_project();
     let args = Args::parse();
 
     let entry = Entry::new("cosense", "default");
@@ -136,38 +148,54 @@ async fn main() -> Result<(), Box<dyn std::error::Error>> {
             let entry = Entry::new("cosense", "default");
             let _ = entry.expect("Failed to create keyring entry").set_password(&sid);
         }
-        SubCommands::Json { resource, pretty, skip, limit, url, query } => {
-            if resource.contains('/') {
-                get_page_json(resource, pretty, url, sid).await?;
-            } else if let Some(query) = query {
-                get_search_json(resource, pretty, url, query, sid).await?;
+        SubCommands::Project { name, url, web } => {
+            if let Some(name) = name {
+                set_current_project(&name);
+                project = name;
+            }
+            if url {
+                println!("https://scrapbox.io/{}", project);
+            } else if web {
+                view_project_on_web(project, url).await?;
             } else {
-                get_project_json(resource, pretty, skip, limit, url, sid).await?;
+                println!("{}", project);
             }
         }
-        SubCommands::Pages { project, skip, limit, url, link } => {
-            if !project.contains('/') {
+        SubCommands::List { json, pretty, skip, limit, url, link, web } => {
+            if json {
+                get_pages_json(project, pretty, skip, limit, url, sid).await?;
+            } else if web {
+                view_project_on_web(project, url).await?;
+            } else {
                 get_pages(project, skip, limit, url, sid, link).await?;
             }
         }
-        SubCommands::Page { page, web, url, body } => {
-            if web {
-                view_page_on_web(page, url, body).await?;
+        SubCommands::Page { json, pretty, page, web, url, body } => {
+            if json {
+                get_page_json(project, page, pretty, url, sid).await?;
+            } else if web {
+                view_page_on_web(project, page, url, body).await?;
             } else {
-                view_page(page, url, sid).await?;
+                view_page(project, page, url, sid).await?;
             }
         }
-        SubCommands::Code { page, name, url } => {
-            get_code(page, name, url, sid).await?;
+        SubCommands::Code { name, url } => {
+            get_code(project, name, url, sid).await?;
         }
-        SubCommands::Table { page, name, url } => {
-            get_table(page, name, url, sid).await?;
+        SubCommands::Table { name, url } => {
+            get_table(project, name, url, sid).await?;
         }
         SubCommands::Icon { page, url } => {
-            get_icon(page, url, sid).await?;
+            get_icon(project, page, url, sid).await?;
         }
-        SubCommands::Search { query, url, project, link } => {
-            search(query, url, project, link, sid).await?;
+        SubCommands::Search { url, query, json, pretty, web, link } => {
+            if json {
+                get_search_json(project, pretty, url, query, sid).await?;
+            } else if web {
+                search_on_web(project, query, url).await?;
+            } else {
+                search(project, query, url, link, sid).await?;
+            }
         }
     }
 

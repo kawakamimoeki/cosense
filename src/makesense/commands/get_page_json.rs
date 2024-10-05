@@ -1,8 +1,8 @@
 use crate::makesense::models::page::Page;
 
-pub async fn get_page_json(page: String, pretty: bool, url: bool, sid: String) -> Result<(), Box<dyn std::error::Error>> {
+pub async fn get_page_json(project: String, page: String, pretty: bool, url: bool, sid: String) -> Result<(), Box<dyn std::error::Error>> {
   let client = reqwest::Client::new();
-  let endpoint = format!("https://scrapbox.io/api/pages/{}", page);
+  let endpoint = format!("https://scrapbox.io/api/pages/{}/{}", project, page);
 
   if url {
       println!("{}", endpoint);

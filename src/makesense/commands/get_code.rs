@@ -1,5 +1,5 @@
-pub async fn get_code(page: String, name: String, url: bool, sid: String) -> Result<(), Box<dyn std::error::Error>> {
-  let endpoint = format!("https://scrapbox.io/api/code/{}/{}", page, name);
+pub async fn get_code(project: String, name: String, url: bool, sid: String) -> Result<(), Box<dyn std::error::Error>> {
+  let endpoint = format!("https://scrapbox.io/api/code/{}/{}", project, name);
 
 
   if url {

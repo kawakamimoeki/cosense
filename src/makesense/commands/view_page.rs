@@ -1,7 +1,7 @@
 use crate::makesense::models::page::Page;
 
-pub async fn view_page(page: String, url: bool, sid: String) -> Result<(), Box<dyn std::error::Error>> {
-  let endpoint = format!("https://scrapbox.io/api/pages/{}", page);
+pub async fn view_page(project: String, page: String, url: bool, sid: String) -> Result<(), Box<dyn std::error::Error>> {
+  let endpoint = format!("https://scrapbox.io/api/pages/{}/{}", project, page);
 
   if url {
       println!("{}", endpoint);
