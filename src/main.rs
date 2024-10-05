@@ -3,6 +3,7 @@ use clap::Subcommand;
 mod cs;
 use cs::commands::get_code::get_code;
 use cs::commands::get_icon::get_icon;
+use cs::commands::get_links::get_links;
 use cs::commands::get_page_json::get_page_json;
 use cs::commands::get_pages::get_pages;
 use cs::commands::get_pages_json::get_pages_json;
@@ -94,7 +95,7 @@ enum SubCommands {
         /// Get URL of API
         url: bool,
         #[clap(short, long)]
-        /// Get type of resource (code, table, icon)
+        /// Get type of resource (code, table, icon, links)
         resource: Option<String>,
     },
     /// Find pages
@@ -174,6 +175,8 @@ async fn main() -> Result<(), Box<dyn std::error::Error>> {
                 get_table(project, name, url, sid).await?;
             } else if resource == Some("icon".to_string()) {
                 get_icon(project, name, url, sid).await?;
+            } else if resource == Some("links".to_string()) {
+                get_links(project, name, url, sid).await?;
             } else {
                 get_code(project, name, url, sid).await?;
             }

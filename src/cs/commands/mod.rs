@@ -10,3 +10,4 @@ pub mod search;
 pub mod get_search_json;
 pub mod search_on_web;
 pub mod view_project_on_web;
+pub mod get_links;

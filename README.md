@@ -136,12 +136,14 @@ Options:
   - `code`: Retrieve code snippets
   - `table`: Retrieve tables
   - `icon`: Retrieve icons
+  - `links`: Retrieve links
 
 Example:
 ```
 cs get my-page/my-code-snippet --resource code
 cs get my-page/my-table-name --resource table
 cs get my-page --resource icon
+cs get my-page --resource links
 ```
 
 ### Find

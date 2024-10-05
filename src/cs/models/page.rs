@@ -55,4 +55,8 @@ impl Page {
     pub fn get_line_text(&self) -> Vec<String> {
         self.lines.iter().map(|line| line.get_text()).flatten().collect()
     }
+
+    pub fn get_links(&self) -> Vec<String> {
+        self.links.clone()
+    }
 }
