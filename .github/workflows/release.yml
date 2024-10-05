@@ -16,13 +16,13 @@ jobs:
       matrix:
         include:
           - os: ubuntu-latest
-            artifact_name: makesense
+            artifact_name: mks
             asset_name: makesense-linux-amd64
           - os: windows-latest
-            artifact_name: makesense.exe
+            artifact_name: mks.exe
             asset_name: makesense-windows-amd64.exe
           - os: macos-latest
-            artifact_name: makesense
+            artifact_name: mks
             asset_name: makesense-macos-amd64
 
     steps:
